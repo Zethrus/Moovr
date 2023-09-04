@@ -51,29 +51,25 @@ public class Moovr extends JavaPlugin implements Listener {
 
   @EventHandler
   public void onPlayerMoveEvent(PlayerMoveEvent event) {
-    event.getFrom().getBlock().getLocation().equals(event.getTo().getBlock().getLocation());
     Player player = event.getPlayer();
     Block block = player.getLocation().getBlock();
     Block blockAbove = block.getRelative(BlockFace.UP);
 
-    if ((player.hasPermission("moovr.use") || player.getPlayer().isOp()) && blockAbove.getType() == Material.AIR) {
+    if ((player.hasPermission("moovr.use") || player.isOp()) && blockAbove.getType() == Material.AIR) {
       if (block.getType() == Material.POWERED_RAIL) {
         Block blockUnder = block.getRelative(BlockFace.DOWN);
         if (blockUnder.getType() == Material.GOLD_BLOCK
-            && blockUnder.getRelative(BlockFace.DOWN).getType() == Material.REDSTONE_TORCH
-            && player.hasPermission("moovr.use")) {
-          float walkspeed = (float) Math.max(Math.min(moovrSpeed, 1.0), -1.0);
-          player.setWalkSpeed(walkspeed);
+            && blockUnder.getRelative(BlockFace.DOWN).getType() == Material.REDSTONE_TORCH) {
+          float walkSpeed = (float) Math.max(Math.min(moovrSpeed, 1.0), -1.0);
+          player.setWalkSpeed(walkSpeed);
 
-          // Get the direction the player is facing
           Location playerLocation = player.getLocation();
           Vector direction = playerLocation.getDirection().normalize();
-          // Apply a forward velocity to the player
           player.setVelocity(direction.multiply(0.5));
         }
       } else {
-        float defaultwalkspeed = 0.2F;
-        player.setWalkSpeed(defaultwalkspeed);
+        float defaultWalkSpeed = 0.2F;
+        player.setWalkSpeed(defaultWalkSpeed);
       }
     }
   }
