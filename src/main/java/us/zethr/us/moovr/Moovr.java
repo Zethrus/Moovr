@@ -31,28 +31,29 @@ public class Moovr extends JavaPlugin implements Listener {
   public void loadConfig() {
     getConfig().options().copyDefaults(true);
     saveDefaultConfig();
-    moovrSpeed = getConfig().getDouble("boost-height", 2.0);
+    moovrSpeed = getConfig().getDouble("boost-height", 0.5);
   }
 
-@EventHandler
+  @EventHandler
   public void onPlayerMoveEvent(PlayerMoveEvent event) {
     event.getFrom().getBlock().getLocation().equals(event.getTo().getBlock().getLocation());
     Player player = event.getPlayer();
     Block block = player.getLocation().getBlock();
     Block blockAbove = block.getRelative(BlockFace.UP);
-    if ((player.hasPermission("moovr.use") || player.getPlayer().isOp()) && 
-      blockAbove.getType() == Material.AIR)
+
+    if ((player.hasPermission("moovr.use") || player.getPlayer().isOp()) && blockAbove.getType() == Material.AIR) {
       if (block.getType() == Material.POWERED_RAIL) {
         Block blockUnder = block.getRelative(BlockFace.DOWN);
-        if (blockUnder.getType() == Material.GOLD_BLOCK && 
-          player.hasPermission("moovr.use")) {
-          float walkspeed = (float)moovrSpeed;
+
+        if (blockUnder.getType() == Material.GOLD_BLOCK && player.hasPermission("moovr.use")) {
+          float walkspeed = (float) Math.max(Math.min(moovrSpeed, 1.0), -1.0);
           player.setWalkSpeed(walkspeed);
-        } 
+        }
       } else {
         float defaultwalkspeed = 0.2F;
         player.setWalkSpeed(defaultwalkspeed);
-      }  
+      }
+    }
   }
 
   @Override
