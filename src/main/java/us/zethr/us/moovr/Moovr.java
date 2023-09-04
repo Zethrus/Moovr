@@ -2,7 +2,6 @@ package us.zethr.us.moovr;
 
 import java.io.IOException;
 import java.util.logging.Logger;
-import java.util.Vector;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -15,6 +14,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.util.Vector;
 
 public class Moovr extends JavaPlugin implements Listener {
   private double moovrSpeed; // Store Moovr speed into variable
