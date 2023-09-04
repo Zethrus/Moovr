@@ -7,13 +7,13 @@ author: Zethrus
 dev-url: 'https://github.com/zethrus/Moovr'
 commands:
   moovr:
-    description: 'Reloads the Moovr plugin'
+    description: Reloads the Moovr plugin
     usage: /moovr reload
     permission: moovr.reload
 permissions:
     moovr.use:
-        description: Allows a user to use a Moovr pad.
+        description: Allows a user to use a Moovr pad
         default: op
     moovr.reload:
-        description: Allows a user to reload Moovr config.yml.
+        description: Allows a user to reload Moovr config.yml
         default: op

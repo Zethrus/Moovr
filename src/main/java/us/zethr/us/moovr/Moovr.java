@@ -34,7 +34,7 @@ public class Moovr extends JavaPlugin implements Listener {
   public void loadConfig() {
     getConfig().options().copyDefaults(true);
     saveDefaultConfig();
-    moovrSpeed = getConfig().getDouble("boost-height", 0.5);
+    moovrSpeed = getConfig().getDouble("walkspeed", 0.5);
   }
 
   @EventHandler

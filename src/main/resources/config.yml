@@ -1,6 +1,0 @@
-# Moovr Configuration
-
-moovr:
-
-    # Speed that is applied to player upon walking on the Moovr blocks. Can be -1 - 1 and can use decimals.
-    walkspeed: 0.5
