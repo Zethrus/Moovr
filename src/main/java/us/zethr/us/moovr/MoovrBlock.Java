@@ -1,4 +1,4 @@
-package me.zethrus.moovr;
+package us.zethr.us.moovr;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;
