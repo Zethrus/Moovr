@@ -35,6 +35,14 @@ public class Moovr extends JavaPlugin implements Listener {
     getConfig().options().copyDefaults(true);
     saveDefaultConfig();
     moovrSpeed = getConfig().getDouble("walkspeed", 0.5); 
+
+    for (Player player : Bukkit.getOnlinePlayers()) {
+      if (player.hasPermission("moovr.use")) {
+        float walkspeed = (float) Math.max(Math.min(moovrSpeed, 1.0), -1.0);
+        player.setWalkSpeed(walkspeed);
+      }
+    }
+
   }
 
   @EventHandler
