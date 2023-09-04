@@ -6,7 +6,7 @@ description: We like to moove it.
 author: Zethrus
 dev-url: 'https://github.com/zethrus/Moovr'
 commands:
-  moovr reload:
+  moovr:
     description: 'Reloads the Moovr plugin'
     usage: /moovr reload
     permission: moovr.reload
