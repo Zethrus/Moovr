@@ -9,3 +9,6 @@ permissions:
     moovr.use:
         description: Allows a user to use a Moovr pad.
         default: op
+    moovr.reload:
+        description: Allows a user to reload Moovr config.yml.
+        default: op

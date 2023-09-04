@@ -26,6 +26,9 @@ public class Moovr extends JavaPlugin implements Listener {
     Bukkit.getPluginManager().registerEvents(this, this);
     loadConfig();
     logger.info("Moovr has been enabled!");
+
+    // Register the reload command
+    getCommand("moovr").setExecutor(new MoovrReloadCommand(this));
   }
 
   public void loadConfig() {
@@ -63,28 +66,3 @@ public class Moovr extends JavaPlugin implements Listener {
 
 
 }
-
-
-// OLD CODE
-/*public class Moovr extends JavaPlugin implements Listener {
-    public Player sender;
-
-    public void onEnable() {
-        // Create an instance of MoovrBlock
-        MoovrBlock moovrBlock = new MoovrBlock(this);
-
-        PluginManager pluginManager = getServer().getPluginManager();
-        pluginManager.registerEvents(moovrBlock, this);
-        saveDefaultConfig();
-        //try {
-        //MetricsLite metrics = new MetricsLite((Plugin)this);
-        //metrics.start();
-        //} catch (IOException e) {
-        //System.out.println("PluginMetrics: He's dead, Jim!");
-        //} 
-    }
-
-    public void onDisable() {
-
-    }
-}*/
