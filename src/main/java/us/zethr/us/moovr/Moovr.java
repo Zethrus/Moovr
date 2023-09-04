@@ -57,11 +57,16 @@ public class Moovr extends JavaPlugin implements Listener {
     if ((player.hasPermission("moovr.use") || player.getPlayer().isOp()) && blockAbove.getType() == Material.AIR) {
       if (block.getType() == Material.POWERED_RAIL) {
         Block blockUnder = block.getRelative(BlockFace.DOWN);
-        if (blockUnder.getType() == Material.IRON_BLOCK
+        if (blockUnder.getType() == Material.GOLD_BLOCK
             && blockUnder.getRelative(BlockFace.DOWN).getType() == Material.REDSTONE_TORCH
             && player.hasPermission("moovr.use")) {
           float walkspeed = (float) Math.max(Math.min(moovrSpeed, 1.0), -1.0);
           player.setWalkSpeed(walkspeed);
+
+          // Get the direction the player is facing
+          Vector direction = player.getLocation().getDirection();
+          // Apply a forward velocity to the player
+          player.setVelocity(direction.multiply(0.5));
         }
       } else {
         float defaultwalkspeed = 0.2F;
