@@ -15,7 +15,6 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
-import
 
 public class Moovr extends JavaPlugin implements Listener {
   private double moovrSpeed; // Store Moovr speed into variable
