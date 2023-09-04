@@ -1,0 +1,11 @@
+name: 'Moovr'
+main: us.zethr.us.moovr.Moovr
+version: '1.0'
+description: We like to moove it.
+author: Zethrus
+dev-url: 'https://github.com/zethrus/Moovr'
+
+permissions:
+    moovr.use:
+        description: Allows a user to use a Moovr pad.
+        default: op
