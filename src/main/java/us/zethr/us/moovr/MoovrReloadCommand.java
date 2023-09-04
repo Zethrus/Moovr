@@ -17,7 +17,9 @@ public class MoovrReloadCommand implements CommandExecutor {
         if (command.getName().equalsIgnoreCase("moovr") && args.length > 0 && args[0].equalsIgnoreCase("reload")) {
             if (sender.hasPermission("moovr.reload")) {
                 plugin.reloadConfig();
+                plugin.loadConfig(); // Add this line to update the moovrSpeed variable
                 sender.sendMessage("Moovr configuration reloaded.");
+                plugin.getLogger().info("Moovr configuration reloaded."); // Add debug message
                 return true;
             } else {
                 sender.sendMessage("You do not have permission to reload the Moovr configuration.");

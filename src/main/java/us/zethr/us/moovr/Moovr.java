@@ -32,6 +32,8 @@ public class Moovr extends JavaPlugin implements Listener {
   }
 
   public void loadConfig() {
+
+    getLogger().info("Loading config...");
     getConfig().options().copyDefaults(true);
     saveDefaultConfig();
     moovrSpeed = getConfig().getDouble("walkspeed", 0.5); 
