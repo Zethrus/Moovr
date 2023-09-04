@@ -57,7 +57,7 @@ public class Moovr extends JavaPlugin implements Listener {
     if ((player.hasPermission("moovr.use") || player.getPlayer().isOp()) && blockAbove.getType() == Material.AIR) {
       if (block.getType() == Material.POWERED_RAIL) {
         Block blockUnder = block.getRelative(BlockFace.DOWN);
-        if (blockUnder.getType() == Material.GOLD_BLOCK
+        if (blockUnder.getType() == Material.IRON_BLOCK
             && blockUnder.getRelative(BlockFace.DOWN).getType() == Material.REDSTONE_TORCH
             && player.hasPermission("moovr.use")) {
           float walkspeed = (float) Math.max(Math.min(moovrSpeed, 1.0), -1.0);
