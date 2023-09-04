@@ -65,7 +65,8 @@ public class Moovr extends JavaPlugin implements Listener {
           player.setWalkSpeed(walkspeed);
 
           // Get the direction the player is facing
-          Vector direction = player.getLocation().getDirection();
+          Location playerLocation = player.getLocation();
+          Vector direction = playerLocation.getDirection().normalize();
           // Apply a forward velocity to the player
           player.setVelocity(direction.multiply(0.5));
         }
