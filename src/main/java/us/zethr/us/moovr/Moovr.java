@@ -81,7 +81,7 @@ public class Moovr extends JavaPlugin implements Listener {
   }
 
   public boolean isMoovrEnabled(Player player) {
-    return moovrEnabledMap.getOrDefault(player.getUniqueId(), false);
+    return moovrEnabledMap.getOrDefault(player.getUniqueId(), true);
   }
 
   public void setMoovrEnabled(Player player, boolean enabled) {
