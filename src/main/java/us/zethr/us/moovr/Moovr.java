@@ -31,8 +31,9 @@ public class Moovr extends JavaPlugin implements Listener {
     loadConfig();
     logger.info("Moovr has been enabled!");
 
-    // Register the reload command
+    // Register the commands
     getCommand("moovr").setExecutor(new MoovrReloadCommand(this));
+    getCommand("moovr").setExecutor(new MoovrSetSpeedCommand(this));
 
     // Register the player move listener
     MoovrPlayerMoveListener playerMoveListener = new MoovrPlayerMoveListener(this);
@@ -53,6 +54,10 @@ public class Moovr extends JavaPlugin implements Listener {
 
   public double getMoovrSpeed() {
     return moovrSpeed;
+  }
+
+  public void setMoovrSpeed(double speed) {
+    moovrSpeed = speed;
   }
 
   public boolean isPluginEnabled() {

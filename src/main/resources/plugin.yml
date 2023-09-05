@@ -17,3 +17,6 @@ permissions:
     moovr.reload:
         description: Allows a user to reload Moovr config.yml
         default: op
+    moovr.setspeed:
+        description: Allows the player to set the Moovr speed
+        default: op
