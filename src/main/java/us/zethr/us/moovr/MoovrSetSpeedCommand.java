@@ -20,9 +20,8 @@ public class MoovrSetSpeedCommand implements CommandExecutor {
         this.plugin = plugin;
 
         // Create a DecimalFormat with the correct locale and pattern
-        DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.getDefault());
-        symbols.setDecimalSeparator('.');
-        decimalFormat = new DecimalFormat("#0.0", symbols);
+        decimalFormat = new DecimalFormat("#0.0", DecimalFormatSymbols.getInstance(Locale.getDefault()));
+        decimalFormat.setParseBigDecimal(true);
     }
 
     @Override
