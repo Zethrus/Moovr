@@ -16,6 +16,9 @@ commands:
   moovrtoggle:
     description: Toggles the Moovr functionality on/off for the player
     permission: moovr.toggle
+  moovrreload:
+    description: Reloads the config.yml
+    permission: moovr.reload
 
 permissions:
   moovr.reload:
