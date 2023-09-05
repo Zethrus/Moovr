@@ -29,7 +29,7 @@ public class MoovrToggleCommand implements CommandExecutor {
         }
 
         boolean enabled = plugin.isMoovrEnabled(player);
-        plugin.setMoovrEnabled(player, !enabled);
+        plugin.setMoovrEnabled(player, enabled);
 
         if (enabled) {
             plugin.disableMoovrForPlayer(player);
