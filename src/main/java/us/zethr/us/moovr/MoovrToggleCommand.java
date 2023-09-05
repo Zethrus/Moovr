@@ -1,10 +1,10 @@
 package us.zethr.us.moovr;
 
-import org.bukkit.entity.Player;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 public class MoovrToggleCommand implements CommandExecutor {
 
@@ -32,7 +32,11 @@ public class MoovrToggleCommand implements CommandExecutor {
         plugin.setMoovrEnabled(player, !enabled);
 
         if (enabled) {
-            player.sendMessage(ChatColor.GREEN + "Moovr has been disabled for you."); } else { player.sendMessage(ChatColor.GREEN + "Moovr has been enabled for you."); }
-                return true;
-            }
+            player.sendMessage(ChatColor.GREEN + "Moovr has been disabled for you.");
+        } else {
+            player.sendMessage(ChatColor.GREEN + "Moovr has been enabled for you.");
         }
+
+        return true;
+    }
+}
