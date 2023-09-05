@@ -58,6 +58,8 @@ public class Moovr extends JavaPlugin implements Listener {
 
   public void setMoovrSpeed(double speed) {
     moovrSpeed = speed;
+    getConfig().set("walkspeed", speed);
+    saveConfig();
   }
 
   public boolean isPluginEnabled() {
