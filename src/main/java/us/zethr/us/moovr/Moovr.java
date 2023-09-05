@@ -32,8 +32,8 @@ public class Moovr extends JavaPlugin implements Listener {
     logger.info("Moovr has been enabled!");
 
     // Register the commands
-    getCommand("moovr").setExecutor(new MoovrReloadCommand(this));
-    getCommand("moovr").setExecutor(new MoovrSetSpeedCommand(this));
+    getCommand("moovrreload").setExecutor(new MoovrReloadCommand(this));
+    getCommand("moovrsetspeed").setExecutor(new MoovrSetSpeedCommand(this));
 
     // Register the player move listener
     MoovrPlayerMoveListener playerMoveListener = new MoovrPlayerMoveListener(this);

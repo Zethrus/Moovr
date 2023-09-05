@@ -6,11 +6,14 @@ description: We like to moove it.
 author: Zethrus
 dev-url: 'https://github.com/zethrus/Moovr'
 commands:
-  moovr:
-    description: Moovr plugin command
-    usage: /moovr <reload|setspeed>
-    permission: moovr.use
-    aliases: [mvr]
+  moovrreload:
+    description: Reload Moovr configuration
+    usage: /moovrreload
+    permission: moovr.reload
+  moovrsetspeed:
+    description: Set the Moovr speed
+    usage: /moovrsetspeed <amount>
+    permission: moovr.setspeed
 
 permissions:
   moovr.reload:

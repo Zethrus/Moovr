@@ -51,7 +51,7 @@ public class MoovrSetSpeedCommand implements CommandExecutor {
                 throw new IllegalArgumentException();
             }
         } catch (ParseException | IllegalArgumentException e) {
-            player.sendMessage(ChatColor.RED + "Invalid speed. Please enter a number between 1.0 and -1.0.");
+            player.sendMessage(ChatColor.RED + "Invalid speed. Please enter a number between -1.0 and 1.0.");
             return true;
         }
 
