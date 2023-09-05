@@ -29,8 +29,8 @@ public class MoovrPlayerMoveListener implements Listener {
         }
 
         // Check if the player is moving
-        if (from.getX() != to.getX() || from.getY() != to.getY() || from.getZ() != to.getZ()) {
-            Block block = player.getLocation().getBlock();
+        if (!from.equals(to)) {
+            Block block = to.getBlock();
             Block blockAbove = block.getRelative(BlockFace.UP);
 
             if ((player.hasPermission("moovr.use") || player.isOp()) && blockAbove.getType() == Material.AIR) {
@@ -48,8 +48,7 @@ public class MoovrPlayerMoveListener implements Listener {
                         }
                     }
                 } else {
-                    float defaultwalkspeed = 0.2F;
-                    player.setWalkSpeed(defaultwalkspeed);
+                    player.setWalkSpeed(0.2f);
                 }
             }
         }
