@@ -19,6 +19,9 @@ import org.bukkit.Location;
 
 public class Moovr extends JavaPlugin implements Listener {
   private double moovrSpeed; // Store Moovr speed into variable
+  private boolean pluginEnabled;
+  private boolean moovrSoundEnabled;
+  private String moovrSound;
 
   private Logger logger = Bukkit.getLogger();
 
@@ -42,13 +45,27 @@ public class Moovr extends JavaPlugin implements Listener {
     getConfig().options().copyDefaults(true);
     saveDefaultConfig();
     moovrSpeed = getConfig().getDouble("walkspeed", 0.5); 
-
+    pluginEnabled = getConfig().getBoolean("enabled", true);
+    moovrSoundEnabled = getConfig().getBoolean("sound.enabled", true);
+    moovrSound = getConfig().getString("sound.sound", "ENTITY_MINECART_RIDING");
 
   }
 
   public double getMoovrSpeed() {
     return moovrSpeed;
   }
+
+  public boolean isPluginEnabled() {
+    return pluginEnabled;
+  }
+  public boolean isMoovrSoundEnabled() {
+    return moovrSoundEnabled;
+  }
+
+  public String getMoovrSound() {
+    return moovrSound;
+  }
+
 
   @Override
   public void onDisable() {

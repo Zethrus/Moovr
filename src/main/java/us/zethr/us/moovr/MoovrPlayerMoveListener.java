@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.Sound;
 
 public class MoovrPlayerMoveListener implements Listener {
 
@@ -31,6 +32,11 @@ public class MoovrPlayerMoveListener implements Listener {
                         && player.hasPermission("moovr.use")) {
                     float walkspeed = (float) Math.max(Math.min(plugin.getMoovrSpeed(), 1.0), -1.0);
                     player.setWalkSpeed(walkspeed);
+
+                    // Play Minecart rolling sound
+                    if (plugin.isMoovrSoundEnabled()) {
+                        player.playSound(player.getLocation(), Sound.valueOf(plugin.getMoovrSound()), 1.0f, 1.0f);
+                    }
                 }
             } else {
                 float defaultwalkspeed = 0.2F;
