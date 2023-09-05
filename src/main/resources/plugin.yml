@@ -11,7 +11,7 @@ commands:
     usage: /moovr
   moovrsetspeed:
     description: Sets the Moovr speed
-    usage: /moovr setspeed <amount>
+    usage: /moovrsetspeed <amount>
     permission: moovr.setspeed
   moovrtoggle:
     description: Toggles the Moovr functionality on/off for the player
@@ -27,3 +27,5 @@ permissions:
     description: Allows the player to set the Moovr speed
   moovr.toggle:
     description: Allows the player to toggle the Moovr functionality for themselves
+  moovr.use:
+    description: Allows the player to use a Moovr block
