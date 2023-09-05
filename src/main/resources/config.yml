@@ -1,5 +1,5 @@
 enabled: true
 sound:
   enabled: true
-  sound: ENTITY_MINECART_RIDING
+  sound: ITEM_ELYTRA_FLYING
 walkspeed: 0.1
