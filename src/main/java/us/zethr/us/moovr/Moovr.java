@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.logging.Logger;
 
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
@@ -22,6 +23,12 @@ public class Moovr extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         logger = getLogger();
+        
+        //Plugin ID for bStats
+        int pluginId = 19734;
+        //Set up metrics
+        Metrics metrics = new Metrics(this, pluginId);
+
         // Register and load config
         loadConfig();
         logger.info("Moovr has been enabled!");
