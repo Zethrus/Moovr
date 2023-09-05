@@ -7,16 +7,15 @@ author: Zethrus
 dev-url: 'https://github.com/zethrus/Moovr'
 commands:
   moovr:
-    description: Reloads the Moovr plugin
-    usage: /moovr reload
-    permission: moovr.reload
+    description: Moovr plugin command
+    usage: /moovr <reload|setspeed>
+    permission: moovr.use
+    aliases: [mvr]
+
 permissions:
-    moovr.use:
-        description: Allows a user to use a Moovr pad
-        default: op
-    moovr.reload:
-        description: Allows a user to reload Moovr config.yml
-        default: op
-    moovr.setspeed:
-        description: Allows the player to set the Moovr speed
-        default: op
+  moovr.reload:
+    description: Allows the player to reload Moovr configuration
+    default: op
+  moovr.setspeed:
+    description: Allows the player to set the Moovr speed
+    default: op

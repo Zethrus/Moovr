@@ -6,23 +6,20 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.Locale;
 
 public class MoovrSetSpeedCommand implements CommandExecutor {
 
     private final Moovr plugin;
-    private final DecimalFormat decimalFormat;
+    private final NumberFormat numberFormat;
 
     public MoovrSetSpeedCommand(Moovr plugin) {
         this.plugin = plugin;
 
-        // Create a DecimalFormat with the correct locale and pattern
-        DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.getDefault());
-        symbols.setDecimalSeparator('.');
-        decimalFormat = new DecimalFormat("#0.0", symbols);
+        // Create a NumberFormat with the correct locale
+        numberFormat = NumberFormat.getInstance(Locale.US);
     }
 
     @Override
@@ -46,8 +43,9 @@ public class MoovrSetSpeedCommand implements CommandExecutor {
 
         double speed;
         try {
-            speed = decimalFormat.parse(args[0]).doubleValue();
-        } catch (ParseException e) {
+            Number parsedNumber = numberFormat.parse(args[0]);
+            speed = parsedNumber.doubleValue();
+        } catch (ParseException | NumberFormatException e) {
             player.sendMessage(ChatColor.RED + "Invalid speed. Please enter a valid number.");
             return true;
         }
