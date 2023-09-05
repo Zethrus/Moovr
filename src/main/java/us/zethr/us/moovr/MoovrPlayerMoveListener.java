@@ -40,7 +40,7 @@ public class MoovrPlayerMoveListener implements Listener {
 
                         // Play Minecart rolling sound
                         if (plugin.isMoovrSoundEnabled()) {
-                            player.playSound(player.getLocation(), Sound.valueOf(plugin.getMoovrSound()), 1.0f, 1.0f);
+                            player.playSound(player.getLocation(), Sound.valueOf(plugin.getMoovrSound()), 0.7f, 0.4f);
                         }
                     }
                 } else {
