@@ -1,6 +1,6 @@
 name: 'Moovr'
 main: us.zethr.us.moovr.Moovr
-version: '1.0'
+version: '${project.version}'
 api-version: '1.20'
 description: We like to moove it.
 author: Zethrus
@@ -26,4 +26,4 @@ permissions:
   moovr.setspeed:
     description: Allows the player to set the Moovr speed
   moovr.toggle:
-    description: Allows the player to toggle the Moovr functionality 
+    description: Allows the player to toggle the Moovr functionality for themselves

@@ -29,7 +29,7 @@ public class MoovrSetSpeedCommand implements CommandExecutor {
         }
 
         if (args.length < 1) {
-            player.sendMessage(ChatColor.RED + "Usage: /moovr setspeed <amount>");
+            player.sendMessage(ChatColor.RED + "Usage: /moovrsetspeed <amount>");
             return true;
         }
 

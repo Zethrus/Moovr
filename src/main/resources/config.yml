@@ -2,4 +2,4 @@ enabled: true
 sound:
   enabled: true
   sound: ITEM_ELYTRA_FLYING
-walkspeed: 0.1
+walkspeed: 0.5
