@@ -28,10 +28,10 @@ public class MoovrPlayerMoveListener implements Listener {
                 if (blockUnder.getType() == Material.GOLD_BLOCK && blockUnder.getRelative(BlockFace.DOWN).getType() == Material.REDSTONE_TORCH) {
                     float walkSpeed = (float) Math.max(Math.min(plugin.getMoovrSpeed(), 1.0), -1.0);
                     player.setWalkSpeed(walkSpeed);
+                } else {
+                    float defaultWalkSpeed = 0.2F;
+                    player.setWalkSpeed(defaultWalkSpeed);
                 }
-            } else {
-                float defaultWalkSpeed = 0.2F;
-                player.setWalkSpeed(defaultWalkSpeed);
             }
         }
     }

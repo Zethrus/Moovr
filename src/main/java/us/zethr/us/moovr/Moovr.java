@@ -25,7 +25,6 @@ public class Moovr extends JavaPlugin implements Listener {
   @Override
   public void onEnable() {
     //Register MoovrBlock and load config
-    Bukkit.getPluginManager().registerEvents(this, this);
     loadConfig();
     logger.info("Moovr has been enabled!");
 
