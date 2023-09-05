@@ -31,6 +31,10 @@ public class Moovr extends JavaPlugin implements Listener {
 
     // Register the reload command
     getCommand("moovr").setExecutor(new MoovrReloadCommand(this));
+
+    // Register the player move listener
+    MoovrPlayerMoveListener playerMoveListener = new MoovrPlayerMoveListener(this);
+    getServer().getPluginManager().registerEvents(playerMoveListener, this);
   }
 
   public void loadConfig() {
@@ -40,39 +44,12 @@ public class Moovr extends JavaPlugin implements Listener {
     saveDefaultConfig();
     moovrSpeed = getConfig().getDouble("walkspeed", 0.5); 
 
-    for (Player player : Bukkit.getOnlinePlayers()) {
-      if (player.hasPermission("moovr.use")) {
-        float walkspeed = (float) Math.max(Math.min(moovrSpeed, 1.0), -1.0);
-        player.setWalkSpeed(walkspeed);
-      }
-    }
 
   }
 
-@EventHandler
-public void onPlayerMoveEvent(PlayerMoveEvent event) {
-    Player player = event.getPlayer();
-    Block block = player.getLocation().getBlock();
-    Block blockAbove = block.getRelative(BlockFace.UP);
-
-    if ((player.hasPermission("moovr.use") || player.isOp()) && blockAbove.getType() == Material.AIR) {
-        if (block.getType() == Material.POWERED_RAIL) {
-            Block blockUnder = block.getRelative(BlockFace.DOWN);
-            if (blockUnder.getType() == Material.GOLD_BLOCK && blockUnder.getRelative(BlockFace.DOWN).getType() == Material.REDSTONE_TORCH) {
-                float walkSpeed = (float) Math.max(Math.min(moovrSpeed, 1.0), -1.0);
-                player.setWalkSpeed(walkSpeed);
-
-                Location playerLocation = player.getLocation();
-                Vector direction = playerLocation.getDirection().normalize();
-                playerLocation.add(direction.multiply(0.5));
-                player.teleport(playerLocation);
-            }
-        } else {
-            float defaultWalkSpeed = 0.2F;
-            player.setWalkSpeed(defaultWalkSpeed);
-        }
-    }
-}
+  public double getMoovrSpeed() {
+    return moovrSpeed;
+  }
 
   @Override
   public void onDisable() {
