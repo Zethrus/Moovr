@@ -6,14 +6,14 @@ description: We like to moove it.
 author: Zethrus
 dev-url: 'https://github.com/zethrus/Moovr'
 commands:
-  moovrreload:
+  moovr reload:
     description: Reloads the Moovr configuration
     permission: moovr.reload
-  moovrsetspeed:
+  moovr setspeed:
     description: Sets the Moovr speed
-    usage: /moovrsetspeed <amount>
+    usage: /moovr setspeed <amount>
     permission: moovr.setspeed
-  moovrtoggle:
+  moovr toggle:
     description: Toggles the Moovr functionality on/off for the player
     permission: moovr.toggle
 
