@@ -32,6 +32,7 @@ public class MoovrToggleCommand implements CommandExecutor {
         plugin.setMoovrEnabled(player, !enabled);
 
         if (enabled) {
+            plugin.disableMoovrForPlayer(player);
             player.sendMessage(ChatColor.GREEN + "Moovr has been disabled for you.");
         } else {
             player.sendMessage(ChatColor.GREEN + "Moovr has been enabled for you.");

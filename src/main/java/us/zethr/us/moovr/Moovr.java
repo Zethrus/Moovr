@@ -88,6 +88,10 @@ public class Moovr extends JavaPlugin implements Listener {
     moovrEnabledMap.put(player.getUniqueId(), enabled);
   }
 
+  public void disableMoovrForPlayer(Player player) {
+    player.setWalkSpeed(0.2f); // Set the walk speed back to default or any desired value
+  }
+
   @Override
   public void onDisable() {
     // TODO Auto-generated method stub

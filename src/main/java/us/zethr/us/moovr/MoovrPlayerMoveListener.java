@@ -24,6 +24,10 @@ public class MoovrPlayerMoveListener implements Listener {
         Location from = event.getFrom();
         Location to = event.getTo();
 
+        if (!plugin.isMoovrEnabled(player)) {
+            return; // Moovr is disabled for this player
+        }
+
         // Check if the player is moving
         if (from.getX() != to.getX() || from.getY() != to.getY() || from.getZ() != to.getZ()) {
             Block block = player.getLocation().getBlock();
