@@ -1,6 +1,9 @@
 package us.zethr.us.moovr;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
@@ -22,22 +25,26 @@ public class Moovr extends JavaPlugin implements Listener {
   private boolean pluginEnabled;
   private boolean moovrSoundEnabled;
   private String moovrSound;
+  private Map<UUID, Boolean> moovrEnabledMap;
 
   private Logger logger = Bukkit.getLogger();
 
   @Override
   public void onEnable() {
-    //Register MoovrBlock and load config
+    //Register and load config
     loadConfig();
     logger.info("Moovr has been enabled!");
 
     // Register the commands
     getCommand("moovrreload").setExecutor(new MoovrReloadCommand(this));
     getCommand("moovrsetspeed").setExecutor(new MoovrSetSpeedCommand(this));
+    getCommand("moovrtoggle").setExecutor(new MoovrToggleCommand(this));
 
     // Register the player move listener
     MoovrPlayerMoveListener playerMoveListener = new MoovrPlayerMoveListener(this);
     getServer().getPluginManager().registerEvents(playerMoveListener, this);
+  
+    moovrEnabledMap = new HashMap<>();
   }
 
   public void loadConfig() {
@@ -73,6 +80,13 @@ public class Moovr extends JavaPlugin implements Listener {
     return moovrSound;
   }
 
+  public boolean isMoovrEnabled(Player player) {
+    return moovrEnabledMap.getOrDefault(player.getUniqueId(), false);
+  }
+
+  public void setMoovrEnabled(Player player, boolean enabled) {
+    moovrEnabledMap.put(player.getUniqueId(), enabled);
+  }
 
   @Override
   public void onDisable() {

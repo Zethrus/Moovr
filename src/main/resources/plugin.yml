@@ -7,18 +7,20 @@ author: Zethrus
 dev-url: 'https://github.com/zethrus/Moovr'
 commands:
   moovrreload:
-    description: Reload Moovr configuration
-    usage: /moovrreload
+    description: Reloads the Moovr configuration
     permission: moovr.reload
   moovrsetspeed:
-    description: Set the Moovr speed
+    description: Sets the Moovr speed
     usage: /moovrsetspeed <amount>
     permission: moovr.setspeed
+  moovrtoggle:
+    description: Toggles the Moovr functionality on/off for the player
+    permission: moovr.toggle
 
 permissions:
   moovr.reload:
-    description: Allows the player to reload Moovr configuration
-    default: op
+    description: Allows the player to reload the Moovr configuration
   moovr.setspeed:
     description: Allows the player to set the Moovr speed
-    default: op
+  moovr.toggle:
+    description: Allows the player to toggle the Moovr functionality
