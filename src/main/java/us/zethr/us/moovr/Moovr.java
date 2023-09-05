@@ -1,101 +1,88 @@
 package us.zethr.us.moovr;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
-import org.bukkit.block.Block;
-import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.util.Vector;
-import org.bukkit.Location;
 
 public class Moovr extends JavaPlugin implements Listener {
-  private double moovrSpeed; // Store Moovr speed into variable
-  private boolean pluginEnabled;
-  private boolean moovrSoundEnabled;
-  private String moovrSound;
-  private Map<UUID, Boolean> moovrEnabledMap;
+    private double moovrSpeed; // Store Moovr speed into variable
+    private boolean pluginEnabled;
+    private boolean moovrSoundEnabled;
+    private String moovrSound;
+    private Map<UUID, Boolean> moovrEnabledMap;
 
-  private Logger logger = Bukkit.getLogger();
+    private Logger logger;
 
-  @Override
-  public void onEnable() {
-    //Register and load config
-    loadConfig();
-    logger.info("Moovr has been enabled!");
+    @Override
+    public void onEnable() {
+        logger = getLogger();
+        // Register and load config
+        loadConfig();
+        logger.info("Moovr has been enabled!");
 
-    // Register the commands
-    getCommand("moovrreload").setExecutor(new MoovrReloadCommand(this));
-    getCommand("moovrsetspeed").setExecutor(new MoovrSetSpeedCommand(this));
-    getCommand("moovrtoggle").setExecutor(new MoovrToggleCommand(this));
+        // Register the commands
+        getCommand("moovrreload").setExecutor(new MoovrReloadCommand(this));
+        getCommand("moovrsetspeed").setExecutor(new MoovrSetSpeedCommand(this));
+        getCommand("moovrtoggle").setExecutor(new MoovrToggleCommand(this));
 
-    // Register the player move listener
-    MoovrPlayerMoveListener playerMoveListener = new MoovrPlayerMoveListener(this);
-    getServer().getPluginManager().registerEvents(playerMoveListener, this);
-  
-    moovrEnabledMap = new HashMap<>();
-  }
+        // Register the player move listener
+        getServer().getPluginManager().registerEvents(new MoovrPlayerMoveListener(this), this);
 
-  public void loadConfig() {
+        moovrEnabledMap = new HashMap<>();
+    }
 
-    getLogger().info("Loading config...");
-    getConfig().options().copyDefaults(true);
-    saveDefaultConfig();
-    moovrSpeed = getConfig().getDouble("walkspeed", 0.5); 
-    pluginEnabled = getConfig().getBoolean("enabled", true);
-    moovrSoundEnabled = getConfig().getBoolean("sound.enabled", true);
-    moovrSound = getConfig().getString("sound.sound", "ENTITY_MINECART_RIDING");
+    public void loadConfig() {
+        logger.info("Loading config...");
+        saveDefaultConfig();
 
-  }
+        moovrSpeed = getConfig().getDouble("walkspeed", 0.5);
+        pluginEnabled = getConfig().getBoolean("enabled", true);
+        moovrSoundEnabled = getConfig().getBoolean("sound.enabled", true);
+        moovrSound = getConfig().getString("sound.sound", "ENTITY_MINECART_RIDING");
+    }
 
-  public double getMoovrSpeed() {
-    return moovrSpeed;
-  }
+    public double getMoovrSpeed() {
+        return moovrSpeed;
+    }
 
-  public void setMoovrSpeed(double speed) {
-    moovrSpeed = speed;
-    getConfig().set("walkspeed", speed);
-    saveConfig();
-  }
+    public void setMoovrSpeed(double speed) {
+        moovrSpeed = speed;
+        getConfig().set("walkspeed", speed);
+        saveConfig();
+    }
 
-  public boolean isPluginEnabled() {
-    return pluginEnabled;
-  }
-  public boolean isMoovrSoundEnabled() {
-    return moovrSoundEnabled;
-  }
+    public boolean isPluginEnabled() {
+        return pluginEnabled;
+    }
 
-  public String getMoovrSound() {
-    return moovrSound;
-  }
+    public boolean isMoovrSoundEnabled() {
+        return moovrSoundEnabled;
+    }
 
-  public boolean isMoovrEnabled(Player player) {
-    return moovrEnabledMap.getOrDefault(player.getUniqueId(), true);
-  }
+    public String getMoovrSound() {
+        return moovrSound;
+    }
 
-  public void setMoovrEnabled(Player player, boolean enabled) {
-    moovrEnabledMap.put(player.getUniqueId(), enabled);
-  }
+    public boolean isMoovrEnabled(Player player) {
+        return moovrEnabledMap.getOrDefault(player.getUniqueId(), true);
+    }
 
-  public void disableMoovrForPlayer(Player player) {
-    player.setWalkSpeed(0.2f); // Set the walk speed back to default or any desired value
-  }
+    public void setMoovrEnabled(Player player, boolean enabled) {
+        moovrEnabledMap.put(player.getUniqueId(), enabled);
+    }
 
-  @Override
-  public void onDisable() {
-    // TODO Auto-generated method stub
-  }
+    public void disableMoovrForPlayer(Player player) {
+        player.setWalkSpeed(0.2f); // Set the walk speed back to default or any desired value
+    }
 
-
+    @Override
+    public void onDisable() {
+        // TODO Auto-generated method stub
+    }
 }
