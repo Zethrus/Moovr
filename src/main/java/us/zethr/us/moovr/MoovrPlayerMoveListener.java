@@ -18,20 +18,23 @@ public class MoovrPlayerMoveListener implements Listener {
 
     @EventHandler
     public void onPlayerMoveEvent(PlayerMoveEvent event) {
+        event.getFrom().getBlock().getLocation().equals(event.getTo().getBlock().getLocation());
         Player player = event.getPlayer();
         Block block = player.getLocation().getBlock();
         Block blockAbove = block.getRelative(BlockFace.UP);
 
-        if ((player.hasPermission("moovr.use") || player.isOp()) && blockAbove.getType() == Material.AIR) {
+        if ((player.hasPermission("moovr.use") || player.getPlayer().isOp()) && blockAbove.getType() == Material.AIR) {
             if (block.getType() == Material.POWERED_RAIL) {
                 Block blockUnder = block.getRelative(BlockFace.DOWN);
-                if (blockUnder.getType() == Material.GOLD_BLOCK && blockUnder.getRelative(BlockFace.DOWN).getType() == Material.REDSTONE_TORCH) {
-                    float walkSpeed = (float) Math.max(Math.min(plugin.getMoovrSpeed(), 1.0), -1.0);
-                    player.setWalkSpeed(walkSpeed);
-                } else {
-                    float defaultWalkSpeed = 0.2F;
-                    player.setWalkSpeed(defaultWalkSpeed);
+                if (blockUnder.getType() == Material.GOLD_BLOCK
+                        && blockUnder.getRelative(BlockFace.DOWN).getType() == Material.REDSTONE_TORCH
+                        && player.hasPermission("moovr.use")) {
+                    float walkspeed = (float) Math.max(Math.min(plugin.getMoovrSpeed(), 1.0), -1.0);
+                    player.setWalkSpeed(walkspeed);
                 }
+            } else {
+                float defaultwalkspeed = 0.2F;
+                player.setWalkSpeed(defaultwalkspeed);
             }
         }
     }
