@@ -51,7 +51,7 @@ public class Moovr extends JavaPlugin implements Listener {
         moovrSpeed = getConfig().getDouble("walkspeed", 0.5);
         pluginEnabled = getConfig().getBoolean("enabled", true);
         moovrSoundEnabled = getConfig().getBoolean("sound.enabled", true);
-        moovrSound = getConfig().getString("sound.sound", "ENTITY_MINECART_RIDING");
+        moovrSound = getConfig().getString("sound.sound", "ITEM_ELYTRA_FLYING");
     }
 
     public double getMoovrSpeed() {
@@ -90,6 +90,7 @@ public class Moovr extends JavaPlugin implements Listener {
 
     @Override
     public void onDisable() {
-        // TODO Auto-generated method stub
+
+        logger.info("Moovr has been disabled!");
     }
 }
