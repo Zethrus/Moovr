@@ -6,7 +6,7 @@
 
     <groupId>me.zethr.us.moovr</groupId>
     <artifactId>Moovr</artifactId>
-    <version>1.1.1</version>
+    <version>1.1.2</version>
     <packaging>jar</packaging>
 
     <name>Moovr</name>
